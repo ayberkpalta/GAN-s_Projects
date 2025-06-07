@@ -115,3 +115,5 @@ if __name__ == "__main__":
                     writer_fake.add_image("Fake", img_grid_fake, global_step=step)
 
                 step += 1
+                
+#tensorboard --logdir=logs (past terminal)
