@@ -48,11 +48,11 @@ if __name__ == "__main__":
     ])
 
     dataset = CelebDataset(
-        root_dir=r"C:\Users\Asus\PycharmProjects\GANs_Project\celeb_dataset\images",
+        root_dir=r"celeb_dataset\images",
         transform=transform
     )
 
-    # ===== Datasetin %15'lik kısmını al =====
+    #take datasets 0.15
     total_size = len(dataset)
     subset_size = int(total_size * 0.15)
     np.random.seed(42)
@@ -61,7 +61,7 @@ if __name__ == "__main__":
 
     loader = DataLoader(subset, batch_size=BATCH_SIZE, shuffle=True, num_workers=0, pin_memory=True)
 
-    # ===== Model ve Optimizer =====
+    # ===== Model and Optimizer =====
     gen = Generator(Z_DIM, CHANNELS_IMG, FEATURES_GEN).to(device)
     disc = Discriminator(CHANNELS_IMG, FEATURES_DISC).to(device)
     initialize_weights(gen)
@@ -116,4 +116,4 @@ if __name__ == "__main__":
 
                 step += 1
                 
-#tensorboard --logdir=logs (past terminal)
+#tensorboard --logdir=logs (past terminal) and monitör fake images
